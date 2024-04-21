@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Js practice 4</title>
+  <style>
+    .sub{
+      font-size: 50px;
+      padding: 15px 20px;
+    }
+    .subed{
+      color: white;
+      background-color: black;
+    }
+  </style>
+</head>
+
+<body>
+  <button class="js-sub sub" onclick="subButton()">
+    Subscribe
+  </button>
+
+
+  <script>
+    function subButton() {
+      const s = document.querySelector('.js-sub');
+      if (s.innerText === 'Subscribe') {
+        s.innerText = 'Subscribed';
+        s.classList.add('subed')
+      } else {
+        s.innerText = 'Subscribe';
+        s.classList.remove('subed')
+      }
+    }
+
+  </script>
+</body>
+
+</html>

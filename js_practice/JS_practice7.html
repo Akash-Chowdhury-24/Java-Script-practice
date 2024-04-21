@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Todo List</title>
+
+  <style>
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .head {
+      font-size: 50px;
+      margin-bottom: 0px;
+      font-weight: bold;
+    }
+    .main,.list-display{
+      display: grid;
+      grid-template-columns: 200px 150px 100px;
+      column-gap: 10px;
+      row-gap: 10px;
+      margin-bottom: 10px;
+    }
+    .list-display{
+      align-items: center;
+    }
+    .todo,.date{
+      padding: 5px 15px;
+    }
+    .add-button{
+      background-color: green;
+      border: none;
+      color: white;
+      font-weight: bold;
+    }
+    .delete-button{
+      background-color: darkred;
+      border: none;
+      color: white;
+      font-weight: bold;
+      padding-top: 7.5px;
+      padding-bottom: 7.5px;
+    }
+  </style>
+</head>
+
+<body>
+  <p class="head">Todo List!</p>
+  <div class="main">
+    <input type="text" placeholder="Todo list" class="js-todo todo">
+    <input type="date" class="js-date date">
+    <button class="add-button js-add-button">ADD</button>
+  </div>
+
+  <div class="js-list-display list-display"></div>
+
+
+  <script>
+    let array = [];
+
+
+    document.querySelector('.js-add-button').addEventListener('click',function(){
+      addTodo();
+    });
+    function display() {
+      let todoHTML = '';
+      for (let i = 0; i < array.length; i++) {
+        const a = array[i];
+        const html = `
+        <div>${a.name}</div> 
+        <div>${a.date}</div> 
+        <button class="delete-button js-delete-button" 
+         >DELETE</button> `;
+        todoHTML += html;
+      }
+      document.querySelector('.js-list-display').innerHTML = todoHTML;
+
+      document.querySelectorAll('.js-delete-button').forEach(function(value,index){
+        value.addEventListener('click',function(){
+          array.splice(index,1);  
+          display();
+        });
+      });
+    }
+
+    function addTodo() {
+      const inputElement = document.querySelector('.js-todo');
+      const dateElement = document.querySelector('.js-date');
+
+      const name = inputElement.value;
+      const date = dateElement.value;
+      array.push({
+        name: name,
+        date: date
+      });
+      console.log(array);
+      inputElement.value = '';
+      dateElement.value = '';
+      display();
+    }
+
+
+  </script>
+</body>
+
+</html>
