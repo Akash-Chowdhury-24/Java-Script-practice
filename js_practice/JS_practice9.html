@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Youtube</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../youtube_clone/main.css">
+    <link rel="stylesheet" href="../youtube_clone/general.css">
+</head>
+
+<body style="height: 1000px;">
+    <div class="main js-main">       
+    </div>
+
+    <script>
+        const videoDetails = [{
+            videoimage : '../youtube_clone/imgs/thumbnail-1.webp',
+            time : '14:20',
+            profileimage : '../youtube_clone/imgs/channel-1.jpeg',
+            videotitle : 'Talking Tech and AI with Google CEO Sundar Pichai!',
+            channelname : 'Marques Brownlee',
+            info : '3.4M views · 6 months ago'
+          },{
+            videoimage : '../youtube_clone/imgs/thumbnail-2.webp',
+            time : '8:22',
+            profileimage : '../youtube_clone/imgs/channel-2.jpeg',
+            videotitle : 'Try Not To Laugh Challenge #9',
+            channelname : 'Markiplier',
+            info : '19M views · 4 years ago'
+          },{
+            videoimage : '../youtube_clone/imgs/thumbnail-3.webp',
+            time : '8:22',
+            profileimage : '../youtube_clone/imgs/channel-3.jpeg',
+            videotitle : 'yeah whatever',
+            channelname : 'hoiii hoiii',
+            info : '19M views · 4 years ago'
+          }
+          ]
+          
+          let fullset = '';
+          
+          videoDetails.forEach(function(video){
+            fullset += `<div class="video">
+                      <div class="video-box">
+                          <img class="video-image" src="${video.videoimage}">
+                          <div class="time">${video.time}</div>
+                      </div>
+                      <div class="video-details">
+                          <div class="channel-image">
+                              <img class="profile-image" src="${video.profileimage}">
+                          </div>
+                          <div class="video-info">
+                              <p class="video-title">
+                                  ${video.videotitle}
+                              </p>
+                              <p class="channel-name">
+                                  ${video.channelname}
+                              </p>
+                              <p class="info">
+                                  ${video.info}
+                              </p>
+                          </div>
+                      </div>
+                  </div>`
+          });
+           console.log(fullset);
+          document.querySelector('.js-main').innerHTML = fullset;
+          
+    </script>
+</body>
+
+</html>

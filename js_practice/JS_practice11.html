@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>js practice 11</title>
+  <style>
+    .main{
+      background-color: brown;
+      height: 150px;
+      width: 150px;
+    }
+    .main-blue{
+      background-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="main">
+  </div>
+
+  <button class="js-change">change to blue</button>
+
+  <script>
+    document.querySelector('.js-change').addEventListener('click',function(){
+      let a = document.querySelector('.js-change').innerHTML;
+      if(a === 'change to blue'){
+        document.querySelector('.main').classList.add('main-blue')
+        document.querySelector('.js-change').innerHTML = 'change to brown'
+      }
+      if(a === 'change to brown'){
+        document.querySelector('.main').classList.remove('main-blue')
+        document.querySelector('.js-change').innerHTML = 'change to blue'
+      }
+    })
+  </script>
+</body>
+
+</html>

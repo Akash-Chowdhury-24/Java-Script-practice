@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>js practice 10</title>
+</head>
+
+<body>
+  <div class="js-main">
+  </div>
+  
+  <select name="cars" id="cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="opel">Opel</option>
+    <option value="audi">Audi</option>
+  </select>
+
+  <div class="js-items-added">0</div>
+  
+  <script>
+    const cart=[];
+    const items =[{
+      name: "ball",
+      price: 100
+    },{
+      name: "bat",
+      price: 200
+    },{
+      name: "wicket",
+      price: 300
+    }];
+
+    let totalHTML='';
+
+    items.forEach(function(item){
+      totalHTML += `<button style="margin : 10px" class="js-product" data-product-name="${item.name}" >${item.name} $${item.price}</button>`
+    })
+    document.querySelector('.js-main').innerHTML=totalHTML;
+
+    
+    document.querySelectorAll('.js-product')
+    .forEach(function(button){
+      button.addEventListener('click',function(){
+        const productName = button.dataset.productName;
+        let match;
+        cart.forEach(function(cartItem){
+          if(cartItem.name === productName)
+          {
+            match = cartItem;
+          }
+        })
+        if(match){
+          match.quantity++;
+        }
+        else{
+          cart.push({
+            name: productName,
+            quantity: 1
+          });
+        }
+        let cartquantity=0;
+        cart.forEach(function(cartItem){
+          cartquantity+=cartItem.quantity;
+        })
+        document.querySelector('.js-items-added').innerHTML=cartquantity;
+        console.log(cart);
+      })
+    })
+  </script>
+</body>
+
+</html>

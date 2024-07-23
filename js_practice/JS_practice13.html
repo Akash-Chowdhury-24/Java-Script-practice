@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <select class="try">
+    <option value="" disabled selected hidden>choose</option>
+    <option value="a">a</option>
+    <option value="b">b</option>
+    <option value="c">c</option>
+    <option value="d">d</option> 
+  </select>
+
+
+  <script>
+    document.querySelector('.try').addEventListener('change', function() {
+      var selectedValue = this.value;
+      console.log('Selected value:', selectedValue);
+  });
+  </script>
+</body>
+</html>
